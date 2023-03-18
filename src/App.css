@@ -164,7 +164,7 @@
   justify-content: center;
   max-height:100vh;
   width:100vw;
-  background-image: url(C:\Users\HP\Desktop\projects\tenzies-game\src\image\pexels-sara-10375779.jpg);
+  /* background-image: url('../images/dice_image.jpg'); */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

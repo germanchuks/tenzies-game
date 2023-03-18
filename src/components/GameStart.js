@@ -2,6 +2,8 @@ import {useState, useEffect } from 'react'
 import Slider from '@mui/material/Slider';
 // import { BrowserRouter as Router, Switch, Route, Redirect, } from "react-router-dom";
 import { Tab } from '@headlessui/react'
+import diceImage from '../images/dice_image.jpg'
+
 
 export default function GameStart(props) {
    
@@ -50,7 +52,7 @@ export default function GameStart(props) {
 
     return (
         <div className="landing-page">
-            <div className='landing-page-container'>
+            <div className='landing-page-container' style={{backgroundImage:`url(${diceImage})`}}>
                 <div className='welcome-note'>Hello, {playerName}!</div>
                 <div className="button start-game" onClick={handleGameLoad} >{newGameButton}</div>
                 {/* <button className="button" onClick={showLevelSlide}>Difficulty</button> */}
