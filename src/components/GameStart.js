@@ -1,39 +1,39 @@
-import {useState, useEffect } from 'react'
-import Slider from '@mui/material/Slider';
+import {useState } from 'react'
+// import Slider from '@mui/material/Slider';
 // import { BrowserRouter as Router, Switch, Route, Redirect, } from "react-router-dom";
-import { Tab } from '@headlessui/react'
+// import { Tab } from '@headlessui/react'
 import diceImage from '../images/dice_image.jpg'
 
 
 export default function GameStart(props) {
    
-    const [displaySlide, setDisplaySlide] = useState(false)
-    const [playerName, setPlayerName] = useState('Daniel')
+    // const [displaySlide, setDisplaySlide] = useState(false)
+    // const [playerName, setPlayerName] = useState('Daniel')
     const [newGameButton, setNewGameButton] = useState('New Game')
 
             
-    const marks = [
-    {
-        value: 0,
-        label: 'Easy',
-    },
-    {
-        value: 1,
-        label: 'Normal',
-    },
-    {
-        value: 2,
-        label: 'Hard',
-    },
-    ];
+    // const marks = [
+    // {
+    //     value: 0,
+    //     label: 'Easy',
+    // },
+    // {
+    //     value: 1,
+    //     label: 'Normal',
+    // },
+    // {
+    //     value: 2,
+    //     label: 'Hard',
+    // },
+    // ];
     
   
 
 
-    function handleLevelChange(event, newLevel) {
-        props.setLevel(newLevel)
+    // function handleLevelChange(event, newLevel) {
+    //     props.setLevel(newLevel)
         
-    }
+    // }
 
 
     function handleGameLoad() {
@@ -44,19 +44,19 @@ export default function GameStart(props) {
        
     }
 
-    function showLevelSlide() {
-        return (
-            setDisplaySlide(prevDisplay => !prevDisplay)
-        )
-    }
+    // function showLevelSlide() {
+    //     return (
+    //         setDisplaySlide(prevDisplay => !prevDisplay)
+    //     )
+    // }
 
     return (
         <div className="landing-page">
             <div className='landing-page-container' style={{backgroundImage:`url(${diceImage})`}}>
-                <div className='welcome-note'>Hello, {playerName}!</div>
+                <div className='welcome-note'>Hello, playerName!</div>
                 <div className="button start-game" onClick={handleGameLoad} >{newGameButton}</div>
                 {/* <button className="button" onClick={showLevelSlide}>Difficulty</button> */}
-                <Slider
+                {/* <Slider
                     aria-label="Custom marks"
                     defaultValue={0}
                     step={1}
@@ -70,7 +70,7 @@ export default function GameStart(props) {
                         display: displaySlide ? 'inline-block' : 'none'
                     }}
                     onChange={handleLevelChange}
-                />
+                /> */}
                 {/* <button className="button">Leaderboard</button> */}
             </div>
             
