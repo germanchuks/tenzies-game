@@ -45,11 +45,11 @@ function App() {
   //Sets timer function to declare game lost after 25seconds
   useEffect(() => {
     const timer = setTimeout(() => {
-      !gameLoad && setGameLost(true)
-      !gameLoad && setTenzies(true)
-    }, 25000);
+      if (!gameLoad && !tenzies) {setGameLost(true)}
+      (!gameLoad && !tenzies) && setTenzies(true)
+    }, 15000);
     return () => clearTimeout(timer);
-  },[tenzies,gameLost,gameLoad]);
+  },[tenzies,gameLoad]);
 
 
   //Creates new array of random values, set isHeld prop to default and generates id
