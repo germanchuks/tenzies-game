@@ -5,10 +5,20 @@ import {nanoid} from 'nanoid'
 import Game from './components/Game';
 import GameStart from './components/GameStart';
 import GameEnd from './components/GameEnd';
-
+import Timer from './components/Timer';
 
 function App() {
   
+  //Sets timer
+  const [timeCount, setTimeCount] = useState(0);
+
+  //Stops timer
+  const [stopCount, setStopCount] = useState(true);
+
+  //Set Deadline
+  const [deadline, setDeadline] = useState(15)
+  const deadlineCount = deadline * 1000
+
   //Loads homepage first until state is changed on button click.
   const [gameLoad, setGameLoad] = useState(true)
   
@@ -21,8 +31,6 @@ function App() {
   //State changes if player runs out of time
   const [gameLost, setGameLost] = useState(false)
 
-  //Sets difficulty level
-  const [level, setLevel] = useState(0)
 
   //Sets Game Reload Button Label
   const [reloadButtonLabel, setReloadButtonLabel] = useState(gameLost ? 'Try Again' : 'Restart')
@@ -36,8 +44,11 @@ function App() {
     const allValue = dice.every(die => die.value === refValue)
 
     if (allHeld && allValue) {
-      setTenzies(true)
       setGameLost(false)
+      setTimeout(() => {
+        setTenzies(true)
+      }, 800)
+      
     }
   }, [dice])
 
@@ -45,11 +56,17 @@ function App() {
   //Sets timer function to declare game lost after 25seconds
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (!gameLoad && !tenzies) {setGameLost(true)}
-      (!gameLoad && !tenzies) && setTenzies(true)
-    }, 15000);
+      // if (!gameLoad && !tenzies) {setGameLost(true)}
+      // (!gameLoad && !tenzies) && setTenzies(true)
+      if (!gameLoad && !tenzies) {
+        setStopCount(false)
+        setGameLost(true)
+        setTenzies(true)
+        
+      }
+    }, deadlineCount);
     return () => clearTimeout(timer);
-  },[tenzies,gameLoad]);
+  },[tenzies,gameLoad, deadlineCount]);
 
 
   //Creates new array of random values, set isHeld prop to default and generates id
@@ -90,10 +107,13 @@ function App() {
   //Creates a new game by setting all states variables to default
   function newGame() {
     setTimeout(() => {
+      setStopCount(true)
       setTenzies(false)
       setDice(allNewDice)
       setRollCount(0)
-    }, 2000)
+      
+      setTimeCount(0)
+    }, 800)
     
   }
 
@@ -124,8 +144,7 @@ function App() {
       {
         gameLoad ?
           <GameStart 
-            level={level} 
-            setLevel={setLevel} 
+            setDeadline={setDeadline} 
             gameLoad={gameLoad} 
             setGameLoad={setGameLoad} 
           />
@@ -143,8 +162,17 @@ function App() {
               goHome={goHome} 
               reloadButtonLabel={reloadButtonLabel} 
               setReloadButtonLabel={setReloadButtonLabel}
+              timeCount={timeCount}
             />   
       }
+      <Timer 
+        timeCount={timeCount}
+        setTimeCount={setTimeCount}
+        deadline={deadline}
+        stopCount={stopCount}
+        setStopCount={setStopCount}
+        tenzies={tenzies}
+      />
     </div>
   )
 }

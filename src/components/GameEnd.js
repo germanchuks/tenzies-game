@@ -12,7 +12,7 @@ export default function GameEnd(props) {
                     <>
                         <div className='game-tag'>Congratulations. You won!</div>
                         <div className='records'>
-                        <p className='time-record'>Time: 10secs</p>
+                        <p className='time-record'>Time: {props.timeCount}<span>sec</span></p>
                         <p className='roll-record'>Rolls: {props.rollCount}</p>
                         </div>
                         
@@ -28,8 +28,8 @@ export default function GameEnd(props) {
                         {/* <div className="button" onClick={props.newGame}><ReplayIcon /> Try Again</div> */}
                     </>
             }
-            <button className="button" onClick={props.newGame}><ReplayIcon /> <span style={{paddingLeft:'8px'}}>{props.reloadButtonLabel}</span></button>
-            <button className="button" onClick={props.goHome}><HouseIcon /> <span style={{paddingLeft:'8px'}}>Home</span></button>
+            <div className="button" onClick={props.newGame}><ReplayIcon /> <span style={{paddingLeft:'8px'}}>{props.reloadButtonLabel}</span></div>
+            <div className="button" onClick={props.goHome}><HouseIcon /> <span style={{paddingLeft:'8px'}}>Home</span></div>
         </div> 
     )
    
