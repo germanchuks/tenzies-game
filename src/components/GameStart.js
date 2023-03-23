@@ -2,7 +2,7 @@ import { useState } from "react";
 // import Slider from '@mui/material/Slider';
 // import { BrowserRouter as Router, Switch, Route, Redirect, } from "react-router-dom";
 // import { Tab } from '@headlessui/react'
-import diceImage from "../images/dice_image.jpg";
+// import diceImage from "/images/dice_image.jpg";
 
 export default function GameStart(props) {
   // const [displaySlide, setDisplaySlide] = useState(false)
@@ -46,21 +46,28 @@ export default function GameStart(props) {
   // }
 
   return (
-    <div className="landing-page">
+    <div className="landing-page" style={{ position: "relative" }}>
       <div
         className="landing-page-container"
-        style={{ backgroundImage: `url(${diceImage})` }}
+        // style={{ backgroundImage: `url(${diceImage})` }}
       >
-        <div className="welcome-note">Hello, playerName!</div>
-        <button
-          className="button start-game"
-          onClick={handleGameLoad}
-          disabled={isLoading}
-        >
-          {newGameButton}
-        </button>
-        {/* <button className="button" onClick={showLevelSlide}>Difficulty</button> */}
-        {/* <Slider
+        <div style={{ position: "absolute", width: "100%", height: "100%" }}>
+          <img
+            src="/images/dice_image.jpg"
+            style={{ width: "100%", height: "100%" }}
+          />
+        </div>
+        <div style={{ position: "relative", zIndex: 10 }}>
+          <div className="welcome-note">Hello, playerName!</div>
+          <button
+            className="button start-game"
+            onClick={handleGameLoad}
+            disabled={isLoading}
+          >
+            {newGameButton}
+          </button>
+          {/* <button className="button" onClick={showLevelSlide}>Difficulty</button> */}
+          {/* <Slider
                     aria-label="Custom marks"
                     defaultValue={0}
                     step={1}
@@ -75,7 +82,8 @@ export default function GameStart(props) {
                     }}
                     onChange={handleLevelChange}
                 /> */}
-        {/* <button className="button">Leaderboard</button> */}
+          {/* <button className="button">Leaderboard</button> */}
+        </div>
       </div>
     </div>
   );
