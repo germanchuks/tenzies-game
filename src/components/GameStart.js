@@ -5,10 +5,12 @@ import { useState } from "react";
 // import diceImage from "/images/dice_image.jpg";
 
 export default function GameStart(props) {
+
   // const [displaySlide, setDisplaySlide] = useState(false)
   // const [playerName, setPlayerName] = useState('Daniel')
   const [newGameButton, setNewGameButton] = useState("New Game");
   const [isLoading, setIsloading] = useState(false);
+
 
   // const marks = [
   // {
@@ -30,6 +32,7 @@ export default function GameStart(props) {
 
   // }
 
+
   function handleGameLoad() {
     setNewGameButton("Starting...");
     console.log("starting...");
@@ -44,6 +47,7 @@ export default function GameStart(props) {
   //         setDisplaySlide(prevDisplay => !prevDisplay)
   //     )
   // }
+
 
   return (
     <div className="landing-page" style={{ position: "relative" }}>

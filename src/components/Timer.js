@@ -1,3 +1,4 @@
+
 import { useEffect } from "react";
 
 // Set timer feature
@@ -19,6 +20,7 @@ import { useEffect } from "react";
 //         </div>
 //     );
 // };
+
 
 export default function Timer({
   timeCount,
