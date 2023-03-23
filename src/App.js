@@ -8,16 +8,20 @@ import GameEnd from './components/GameEnd';
 import Timer from './components/Timer';
 
 function App() {
-  
+  //Set Deadline
+  const [deadline, setDeadline] = useState(15)
+  const deadlineCount = deadline * 1000
+
   //Sets timer
   const [timeCount, setTimeCount] = useState(0);
+  const [startCount, setStartCount] = useState(false)
+
+  //Sets Timer that displays during gameplay
+  const [displayTime, setDisplayTime] = useState(deadline)
 
   //Stops timer
   const [stopCount, setStopCount] = useState(true);
 
-  //Set Deadline
-  const [deadline, setDeadline] = useState(15)
-  const deadlineCount = deadline * 1000
 
   //Loads homepage first until state is changed on button click.
   const [gameLoad, setGameLoad] = useState(true)
@@ -50,7 +54,7 @@ function App() {
       }, 800)
       
     }
-  }, [dice])
+  }, [dice, deadline])
 
 
   //Sets timer function to declare game lost after 25seconds
@@ -62,11 +66,20 @@ function App() {
         setStopCount(false)
         setGameLost(true)
         setTenzies(true)
+
         
       }
     }, deadlineCount);
     return () => clearTimeout(timer);
   },[tenzies,gameLoad, deadlineCount]);
+
+
+
+  //Sets display time state after each seconds during game play
+  useEffect(() => {
+    startCount && setDisplayTime(prevTime => prevTime - 1)
+  }, [timeCount, setDisplayTime, startCount])
+
 
 
   //Creates new array of random values, set isHeld prop to default and generates id
@@ -78,6 +91,7 @@ function App() {
     }
   }
 
+  
   //Passes generated random arrays to a list
   function allNewDice() {
     const newDice = []
@@ -112,10 +126,15 @@ function App() {
       setDice(allNewDice)
       setRollCount(0)
       
+      setDisplayTime(deadline)
       setTimeCount(0)
     }, 800)
     
+    setTimeout(() => {
+      setStartCount(true)
+    },2000)
   }
+
 
   //Takes player back to homepage
   function goHome() {
@@ -136,23 +155,24 @@ function App() {
   ))
   
 
+
   return (
-
-
-
     <div className="App">
       {
         gameLoad ?
           <GameStart 
             setDeadline={setDeadline} 
             gameLoad={gameLoad} 
-            setGameLoad={setGameLoad} 
+            setGameLoad={setGameLoad}
+            startCount={startCount}
+            setStartCount={setStartCount} 
           />
         :
           !tenzies ?
             <Game 
               dieTiles={dieTiles} 
-              rollDice={rollDice} 
+              rollDice={rollDice}
+              displayTime={displayTime} 
             />
           : 
             <GameEnd 

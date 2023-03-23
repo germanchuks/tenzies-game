@@ -10,7 +10,8 @@ export default function GameStart(props) {
     // const [displaySlide, setDisplaySlide] = useState(false)
     // const [playerName, setPlayerName] = useState('Daniel')
     const [newGameButton, setNewGameButton] = useState('New Game')
-
+    
+    
             
     // const marks = [
     // {
@@ -40,15 +41,14 @@ export default function GameStart(props) {
         setNewGameButton('Starting...')
         setTimeout(() => {
             props.setGameLoad(prevState => !prevState)
-          }, 3000);
-       
+            
+          }, 2000);
+       setTimeout(() => {
+            props.setStartCount(true)
+       }, 2700);
     }
 
-    // function showLevelSlide() {
-    //     return (
-    //         setDisplaySlide(prevDisplay => !prevDisplay)
-    //     )
-    // }
+
 
     return (
         <div className="landing-page">
