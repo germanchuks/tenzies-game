@@ -1,4 +1,5 @@
 export default function Game(props) {
+
     return (
         <main className="tenzies-game">
             <div className="title">Tenzies</div>
@@ -14,3 +15,4 @@ export default function Game(props) {
     )
     
 }
+

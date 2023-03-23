@@ -1,34 +1,33 @@
 .App {
-  display:flex;
+  display: flex;
   text-align: center;
   min-width: 100vw;
-  min-height:100vh;
-  background: #0B2434; 
-  justify-content: center;   
+  min-height: 100vh;
+  background: #0b2434;
+  justify-content: center;
   align-items: center;
-  font-family: 'Inter', sans-serif;
-  font-family: 'Karla', sans-serif;
-  font-family: 'Oswald', sans-serif;
+  font-family: "Inter", sans-serif;
+  font-family: "Karla", sans-serif;
+  font-family: "Oswald", sans-serif;
   box-sizing: border-box;
   overflow: hidden;
   -ms-overflow-style: none;
 }
 
-.tenzies-game{
-  display:flex;
+.tenzies-game {
+  display: flex;
   position: relative;
   flex-direction: column;
   align-items: center;
   width: 600px;
   height: 550px;
-  background: #F5F5F5;
+  background: #f5f5f5;
   border-radius: 20px;
   padding: 0 40px 0 40px;
-  
 }
 
 .title {
-  font-family: 'Karla';
+  font-family: "Karla";
   font-style: normal;
   font-weight: 700;
   font-size: 50px;
@@ -38,11 +37,11 @@
   text-align: center;
   letter-spacing: -0.03em;
   padding-block: 50px;
-  color: #2B283A;
+  color: #2b283a;
 }
 
 .sub-title {
-  font-family: 'Inter';
+  font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 22px;
@@ -51,10 +50,11 @@
   align-items: center;
   text-align: center;
   letter-spacing: -0.03em;
-  width:450px;
-  color: #4A4E74;
-  margin-block:10px;
+  width: 450px;
+  color: #4a4e74;
+  margin-block: 10px;
 }
+
 
 .display-time{
   display:flex;
@@ -65,49 +65,47 @@
 
 .dice-container{
   display:grid;
+
   text-align: center;
-  grid-template-columns: repeat(5,1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-template-rows: auto;
   grid-row-gap: 20px;
-  grid-column-gap:1px;
-  width:90%;
-  margin-block:20px;
-  margin-bottom:40px;
-
+  grid-column-gap: 1px;
+  width: 90%;
+  margin-block: 20px;
+  margin-bottom: 40px;
 }
 
-.die-box{
-  display:flex;
+.die-box {
+  display: flex;
   justify-content: center;
-  align-items:center;
+  align-items: center;
   width: 75px;
   height: 75px;
-  margin:0 auto;
+  margin: 0 auto;
   font-family: Karla;
   font-size: 27px;
   font-weight: 700;
   line-height: 24px;
   letter-spacing: 0em;
-  text-align: center; 
+  text-align: center;
   color: rgba(43, 40, 58, 1);
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
   border-radius: 7px;
   cursor: pointer;
-  opacity:1;
-
-
+  opacity: 1;
 }
 
-.die-box:hover{
+.die-box:hover {
   opacity: 0.85;
 }
 
 .button {
-  display:flex;
+  display: flex;
   align-content: center;
   justify-content: center;
-  font-family: 'Karla';
+  font-family: "Karla";
   font-style: normal;
   font-weight: 700;
   font-size: 18px;
@@ -115,119 +113,117 @@
   display: flex;
   align-items: center;
   text-align: center;
-  margin-block:20px;
-  color: #FFFFFF;
-  background: #5035FF;
+  margin-block: 20px;
+  color: #ffffff;
+  background: #5035ff;
   box-shadow: 0px 3.2px 7.68px rgba(0, 0, 0, 0.18);
   height: 60px;
   width: 150px;
   border-radius: 4px;
   cursor: pointer;
-  margin:0 auto;
+  margin: 0 auto;
   margin-bottom: 50px;
-
 }
 
-.button:active{
+.button:active {
   box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
 }
 
-.replay-screen{
-  display:flex;
+.replay-screen {
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height:100vh;
-  min-width:100vw;
+  min-height: 100vh;
+  min-width: 100vw;
   transition: all 1s linear 1s;
 }
 
-.game-tag{
-  font-family: 'Karla';
+.game-tag {
+  font-family: "Karla";
   font-style: normal;
   font-weight: 700;
   font-size: 30px;
   line-height: 40px;
-  color:#f5f5f5;
-  padding-block:40px;
+  color: #f5f5f5;
+  padding-block: 40px;
 }
 
-.records{
-  font-family:'Courier New', Courier, monospace;
+.records {
+  font-family: "Courier New", Courier, monospace;
   justify-items: left;
-  align-self:left;
+  align-self: left;
   color: #f5f5f5;
   margin-block: 50px;
 }
 
-
 /* Landing Page Screen */
 
-.landing-page{
-  display:flex;
-  position:relative;
+.landing-page {
+  display: flex;
+  position: relative;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-height:100vh;
-  width:100vw;
+  max-height: 100vh;
+  width: 100vw;
   /* background-image: url('../images/dice_image.jpg'); */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  opacity:1;
+  opacity: 1;
   transition: all 1s linear 1s;
   overflow: hidden;
   box-sizing: border-box;
-  padding:80px;
-
+  padding: 80px;
 }
 
 .landing-page::before {
   content: "";
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    background-color: rgba(0,0,0,0.25);
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-color: rgba(0, 0, 0, 0.25);
 }
 
-.landing-page-container{
-  display:flex;
-  position:relative;
+.landing-page-container {
+  display: flex;
+  position: relative;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width:100%;
-  height:100vh;
+  width: 100%;
+  height: 100vh;
+  background-image: url(../public/images/dice_image.jpg);
 }
 
-.start-game{
-  display:flex;
-  font-family: 'Oswald', sans-serif;
+.start-game {
+  display: flex;
+  font-family: "Oswald", sans-serif;
   font-size: 30px;
-  color: #F5F5F5;
+  color: #f5f5f5;
   background-color: transparent;
   border: 10px solid #f5f5f5;
   border-radius: 40px;
   transition: all 0.3s;
-  width:300px;
-  height:150px;
-  
-  margin:20px;
+  width: 300px;
+  height: 150px;
+
+  margin: 20px;
   /* animation: transition 1s linear; */
-  
 }
 
-.welcome-note{
-  display:flex;
+.welcome-note {
+  display: flex;
   font-size: 30px;
   margin-bottom: 80px;
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 .start-game:hover {
-  transform:scale(1.05);
+  transform: scale(1.05);
   background-color: #f5f5f5;
   color: #000;
 }
