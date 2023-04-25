@@ -159,6 +159,13 @@
 
 /* Landing Page Screen */
 
+.play-box {
+  display:flex;
+  align-items: center;
+  flex-direction: column;
+
+}
+
 .landing-page {
   display: flex;
   position: relative;
@@ -175,7 +182,7 @@
   transition: all 1s linear 1s;
   overflow: hidden;
   box-sizing: border-box;
-  padding: 80px;
+  /* padding: 80px; */
 }
 
 .landing-page::before {

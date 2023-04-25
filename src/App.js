@@ -10,11 +10,11 @@ import Timer from "./components/Timer";
 function App() {
 
   //Set Deadline
-  const [deadline, setDeadline] = useState(15)
+  const [deadline, setDeadline] = useState(16)
   const deadlineCount = deadline * 1000
 
 
-  //Sets timer
+  //Sets timer during game play
   const [timeCount, setTimeCount] = useState(0);
   const [startCount, setStartCount] = useState(false)
 
@@ -23,11 +23,6 @@ function App() {
 
   //Stops timer
   const [stopCount, setStopCount] = useState(true);
-
-
-  //Set Deadline
-  const [deadline, setDeadline] = useState(15);
-  const deadlineCount = deadline * 1000;
 
 
   //Loads homepage first until state is changed on button click.
@@ -66,7 +61,7 @@ function App() {
 
 
 
-  //Sets timer function to declare game lost after 25seconds
+  //Sets timer function to declare game lost after deadline
   useEffect(() => {
     const timer = setTimeout(() => {
       // if (!gameLoad && !tenzies) {setGameLost(true)}
@@ -139,7 +134,7 @@ function App() {
       
       setDisplayTime(deadline)
       setTimeCount(0)
-    }, 800)
+    }, 1000)
     
     setTimeout(() => {
       setStartCount(true)
@@ -176,7 +171,10 @@ function App() {
             gameLoad={gameLoad} 
             setGameLoad={setGameLoad}
             startCount={startCount}
+            setTimeCount={setTimeCount}
             setStartCount={setStartCount} 
+            setStopCount={setStopCount}
+
           />
         :
           !tenzies ?

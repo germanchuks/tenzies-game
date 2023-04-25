@@ -35,11 +35,13 @@ export default function GameStart(props) {
 
   function handleGameLoad() {
     setNewGameButton("Starting...");
-    console.log("starting...");
     setIsloading(true);
+    // props.setStartCount(true)
     setTimeout(() => {
-      props.setGameLoad((prevState) => !prevState);
-    }, 3000);
+      props.setGameLoad(false);
+      props.setStartCount(true)
+      // props.setTimeCount(true)
+    }, 2000);
   }
 
   // function showLevelSlide() {
@@ -57,11 +59,11 @@ export default function GameStart(props) {
       >
         <div style={{ position: "absolute", width: "100%", height: "100%" }}>
           <img
-            src="/images/dice_image.jpg"
+            src="/images/dice_image.jpg" alt="Dice"
             style={{ width: "100%", height: "100%" }}
           />
         </div>
-        <div style={{ position: "relative", zIndex: 10 }}>
+        <div className="play-box" style={{ position: "relative", zIndex: 10 }}>
           <div className="welcome-note">Hello, playerName!</div>
           <button
             className="button start-game"

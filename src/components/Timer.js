@@ -38,7 +38,6 @@ export default function Timer({
   // }
 
   useEffect(() => {
-    console.log("time 1");
     if (tenzies) {
       setStopCount(false);
     }
@@ -49,13 +48,12 @@ export default function Timer({
   }, [stopCount, timeCount, deadline, setStopCount, tenzies]);
 
   useEffect(() => {
-    console.log("time 2");
-
+  
     const interval =
       stopCount &&
       !gameLoad &&
       setInterval(() => setTimeCount((prevCount) => prevCount + 1), 1000);
 
     return () => clearInterval(interval);
-  }, [timeCount, stopCount, setTimeCount]);
+  }, [timeCount, stopCount, setTimeCount, gameLoad]);
 }
