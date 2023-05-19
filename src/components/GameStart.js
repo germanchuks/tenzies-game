@@ -1,4 +1,5 @@
 import { useState } from "react";
+import MenuButton from "../components/MenuButton";
 // import Slider from '@mui/material/Slider';
 // import { BrowserRouter as Router, Switch, Route, Redirect, } from "react-router-dom";
 // import { Tab } from '@headlessui/react'
@@ -57,12 +58,14 @@ export default function GameStart(props) {
         className="landing-page-container"
         // style={{ backgroundImage: `url(${diceImage})` }}
       >
+        
         <div style={{ position: "absolute", width: "100%", height: "100%" }}>
           <img
             src="/images/dice_image.jpg" alt="Dice"
             style={{ width: "100%", height: "100%" }}
           />
         </div>
+        <div className='menu-button'><MenuButton /></div>
         <div className="play-box" style={{ position: "relative", zIndex: 10 }}>
           <div className="welcome-note">Hello, playerName!</div>
           <button
