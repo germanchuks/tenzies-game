@@ -14,8 +14,68 @@ import HelpIcon from '@mui/icons-material/Help';
 import DisplaySettingsIcon from '@mui/icons-material/DisplaySettings';
 import ScoreboardIcon from '@mui/icons-material/Scoreboard';
 import LogoutIcon from '@mui/icons-material/Logout';
+import SelectPlayerDialog from './SelectPlayerDialog';
+import LevelDialog from './LevelDialog';
+import HelpDialog from './HelpDialog';
+import ExitDialog from './ExitDialog';
+import ScoresDialog from './ScoresDialog';
 
 export default function MenuButton() {
+
+  //MENU DIALOGS
+  
+  //Prop States
+  const [playerOpen, setPlayerOpen] = React.useState(false);
+  const [levelOpen, setLevelOpen] = React.useState(false);
+  const [scoresOpen, setScoresOpen] = React.useState(false); 
+  const [helpOpen, setHelpOpen] = React.useState(false);
+  const [exitOpen, setExitOpen] = React.useState(false);
+  
+ //Close Dialog Commands 
+  const handlePlayerClose = () => {
+    setPlayerOpen(false);
+  };
+  const handleLevelClose = () => {
+    setLevelOpen(false);
+  };
+  const handleScoresClose = () => {
+    setScoresOpen(false);
+  };
+  const handleHelpClose = () => {
+    setHelpOpen(false);
+  };
+  const handleExitClose = () => {
+    setExitOpen(false);
+  };
+
+  //Open Dialog Command
+  const callDialog = event => {
+    if (event.currentTarget.id === 'Exit') {
+        setExitOpen(true);
+      } else if (event.currentTarget.id === 'Select Player') {
+        setPlayerOpen(true)
+      } else if (event.currentTarget.id === 'Difficulty') {
+        setLevelOpen(true)
+      } else if (event.currentTarget.id === 'Scoreboard') {
+        setScoresOpen(true)
+      } else if (event.currentTarget.id === 'How to Play') {
+        setHelpOpen(true) 
+      }
+  }
+
+  //Dialog Lists
+  const menuDialogs = (
+    <>
+      <SelectPlayerDialog handleClose={handlePlayerClose} open={playerOpen}/>
+      <LevelDialog handleClose={handleLevelClose} open={levelOpen}/>
+      <ScoresDialog handleClose={handleScoresClose} open={scoresOpen}/>
+      <HelpDialog  handleClose={handleHelpClose} open={helpOpen}/>
+      <ExitDialog handleClose={handleExitClose} open={exitOpen}/>
+    </>
+  )
+
+
+  //MENU BAR
   const menu = <MenuIcon />
   const menuItems = [
     {name: 'Select Player', logo: <PeopleIcon />},
@@ -25,19 +85,17 @@ export default function MenuButton() {
   ]
   const [state, setState] = React.useState({
     left: false,
+    
   });
 
-  const toggleDrawer = (anchor, open) => (event) => {
-    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-      return;
-    }
 
+  const toggleDrawer = (anchor, open) => () => {
     setState({ ...state, [anchor]: open });
   };
 
   const list = (anchor) => (
     <Box
-      sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
+      sx={{ width: 250 }}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
@@ -45,11 +103,9 @@ export default function MenuButton() {
       <List>
         {menuItems.map((text) => (
 
-          <ListItem key={text.name} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {text.logo}
-              </ListItemIcon>
+          <ListItem key={text.name} id={text.name} disablePadding>
+            <ListItemButton id={text.name} onClick = {callDialog}>
+              <ListItemIcon>{text.logo}</ListItemIcon>
               <ListItemText primary={text.name} />
             </ListItemButton>
           </ListItem>
@@ -63,10 +119,8 @@ export default function MenuButton() {
         width: '100%',
       }}>
           <ListItem key={'Exit Game'} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {<LogoutIcon />}
-              </ListItemIcon>
+            <ListItemButton id={'Exit'} onClick= {callDialog}>
+              <ListItemIcon>{<LogoutIcon />}</ListItemIcon>
               <ListItemText primary={'Exit Game'} />
             </ListItemButton>
           </ListItem>
@@ -76,22 +130,16 @@ export default function MenuButton() {
 
   return (
     <div>
-      {/* {['Menu'].map((anchor) => (
-        <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
-          <Drawer
-            anchor={anchor}
-            open={state[anchor]}
-            onClose={toggleDrawer(anchor, false)}
-          >
-            {list(anchor)}
-          </Drawer>
-        </React.Fragment>
-      ))} */}
-        <React.Fragment key={'menu'}>
+        <React.Fragment>
+          {/* <SelectPlayerDialog handleClose={handlePlayerClose} open={playerOpen}/>
+          <LevelDialog handleClose={handleLevelClose} open={levelOpen}/>
+          <ScoresDialog handleClose={handleScoresClose} open={scoresOpen}/>
+          <HelpDialog  handleClose={handleHelpClose} open={helpOpen}/>
+          <ExitDialog handleClose={handleExitClose} open={exitOpen}/> */}
+          {menuDialogs}
           <Button onClick={toggleDrawer('menu', true)}>{menu}</Button>
           <Drawer
-            anchor={'menu'}
+            anchor={'left'}
             open={state['menu']}
             onClose={toggleDrawer('menu', false)}
           >
