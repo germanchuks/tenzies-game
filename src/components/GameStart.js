@@ -1,5 +1,8 @@
 import { useState } from "react";
+// import {BrowserRouter as Link} from 'react-router-dom';
 import MenuButton from "../components/MenuButton";
+import ProfileAvatar from "./ProfileAvatar";
+// import Avatar from '@mui/material/Avatar';
 // import Slider from '@mui/material/Slider';
 // import { BrowserRouter as Router, Switch, Route, Redirect, } from "react-router-dom";
 // import { Tab } from '@headlessui/react'
@@ -11,7 +14,7 @@ export default function GameStart(props) {
   // const [playerName, setPlayerName] = useState('Daniel')
   const [newGameButton, setNewGameButton] = useState("New Game");
   const [isLoading, setIsloading] = useState(false);
-
+  
 
   // const marks = [
   // {
@@ -65,9 +68,40 @@ export default function GameStart(props) {
             style={{ width: "100%", height: "100%" }}
           />
         </div>
-        <div className='menu-button'><MenuButton /></div>
+        <div style={{
+          display: 'flex',
+          flexDirection: 'row',
+          minWidth: "100%", 
+          height: '50px',
+          position: 'absolute',
+          top:0,
+          alignItems:'center',
+          padding: 5,
+          justifyContent: "space-between"}}
+          >
+            <MenuButton 
+              playerName={props.playerName}
+              setPlayerName={props.setPlayerName}
+              avatarImage={props.avatarImage}
+              setAvatarImage={props.setAvatarImage}
+              />
+            <a href='/' style={{
+              textDecoration: 'none',
+              position: 'relative', 
+              display: 'flex', 
+              flexDirection: 'row', 
+              justifyContent: 'space-around', 
+              alignItems: 'center',
+              padding: 10,
+              }}>
+                <div style={{padding: '10px'}}>{props.playerName}</div>
+                <ProfileAvatar avatarImage={props.avatarImage} setAvatarImage={props.setAvatarImage} />
+                
+            </a>
+        </div>
+
         <div className="play-box" style={{ position: "relative", zIndex: 10 }}>
-          <div className="welcome-note">Hello, playerName!</div>
+          <div className="welcome-note">Welcome, {props.playerName}!</div>
           <button
             className="button start-game"
             onClick={handleGameLoad}

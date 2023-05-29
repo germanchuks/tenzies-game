@@ -9,12 +9,18 @@ import Timer from "./components/Timer";
 
 function App() {
 
-  //Set Deadline
+  // Player Name
+  const [playerName, setPlayerName] = useState('Kvng')
+
+  // Avatar Image
+  const [avatarImage, setAvatarImage] = useState('')
+
+  //Set Game Deadline
   const [deadline, setDeadline] = useState(16)
   const deadlineCount = deadline * 1000
 
 
-  //Sets timer during game play
+  //Sets game timer during  play
   const [timeCount, setTimeCount] = useState(0);
   const [startCount, setStartCount] = useState(false)
 
@@ -174,6 +180,10 @@ function App() {
             setTimeCount={setTimeCount}
             setStartCount={setStartCount} 
             setStopCount={setStopCount}
+            playerName={playerName}
+            setPlayerName={setPlayerName}
+            avatarImage={avatarImage}
+            setAvatarImage={setAvatarImage}
 
           />
         :

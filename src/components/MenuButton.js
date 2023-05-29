@@ -20,7 +20,7 @@ import HelpDialog from './HelpDialog';
 import ExitDialog from './ExitDialog';
 import ScoresDialog from './ScoresDialog';
 
-export default function MenuButton() {
+export default function MenuButton(props) {
 
   //MENU DIALOGS
   
@@ -31,6 +31,7 @@ export default function MenuButton() {
   const [helpOpen, setHelpOpen] = React.useState(false);
   const [exitOpen, setExitOpen] = React.useState(false);
   
+
  //Close Dialog Commands 
   const handlePlayerClose = () => {
     setPlayerOpen(false);
@@ -47,6 +48,7 @@ export default function MenuButton() {
   const handleExitClose = () => {
     setExitOpen(false);
   };
+  
 
   //Open Dialog Command
   const callDialog = event => {
@@ -66,7 +68,13 @@ export default function MenuButton() {
   //Dialog Lists
   const menuDialogs = (
     <>
-      <SelectPlayerDialog handleClose={handlePlayerClose} open={playerOpen}/>
+      <SelectPlayerDialog 
+        handleClose={handlePlayerClose} 
+        open={playerOpen} 
+        playerName={props.playerName} 
+        setPlayerName={props.setPlayerName}
+        avatarImage={props.avatarImage}
+        setAvatarImage={props.setAvatarImage} />
       <LevelDialog handleClose={handleLevelClose} open={levelOpen}/>
       <ScoresDialog handleClose={handleScoresClose} open={scoresOpen}/>
       <HelpDialog  handleClose={handleHelpClose} open={helpOpen}/>
@@ -95,12 +103,17 @@ export default function MenuButton() {
 
   const list = (anchor) => (
     <Box
-      sx={{ width: 250 }}
-      role="presentation"
-      onClick={toggleDrawer(anchor, false)}
+      sx={{ height:'100%',
+      width: 220,
+      fontFamily: "sans-serif",
+      fontSize: 2,
+      bgcolor: "white",
+    }}
+      fontSize={0.2}
+      onClick={toggleDrawer(anchor, true)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <List>
+      <List >
         {menuItems.map((text) => (
 
           <ListItem key={text.name} id={text.name} disablePadding>
@@ -117,6 +130,7 @@ export default function MenuButton() {
         position: 'absolute',
         bottom: '5px',
         width: '100%',
+        
       }}>
           <ListItem key={'Exit Game'} disablePadding>
             <ListItemButton id={'Exit'} onClick= {callDialog}>
@@ -131,11 +145,6 @@ export default function MenuButton() {
   return (
     <div>
         <React.Fragment>
-          {/* <SelectPlayerDialog handleClose={handlePlayerClose} open={playerOpen}/>
-          <LevelDialog handleClose={handleLevelClose} open={levelOpen}/>
-          <ScoresDialog handleClose={handleScoresClose} open={scoresOpen}/>
-          <HelpDialog  handleClose={handleHelpClose} open={helpOpen}/>
-          <ExitDialog handleClose={handleExitClose} open={exitOpen}/> */}
           {menuDialogs}
           <Button onClick={toggleDrawer('menu', true)}>{menu}</Button>
           <Drawer

@@ -3,16 +3,23 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import FormControl from '@mui/material/FormControl';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
-import Switch from '@mui/material/Switch';
+import CreatePlayerDialog from './CreatePlayerDialog';
+// import Switch from '@mui/material/Switch';
 
 export default function SelectPlayerDialog(props) {
+    
+    //CREATE NEW PLAYER DIALOG
+    const [newPlayerOpen, setNewPlayerOpen] = React.useState(false);
+    
+    function openCreateDialog() {
+        setNewPlayerOpen(true);
+    }
+
+    const newPlayerClose = () => {
+        setNewPlayerOpen(false);
+      };
 
   return (
     <React.Fragment>
@@ -32,12 +39,19 @@ export default function SelectPlayerDialog(props) {
             sx={{
               display: 'flex',
               flexDirection: 'column',
-              m: 'auto',
-              width: '100%',
-              height: '50%',
+              width: '500px',
+              height: '200px'
             }}
           >
-            <FormControl sx={{ minWidth: 120, display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly', padding: '5px'}}>
+            <FormControl sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly', padding: '5px'}}>
+                <Button onClick={openCreateDialog}>Create New Player</Button>
+                <CreatePlayerDialog 
+                  handleClose={newPlayerClose} 
+                  open={newPlayerOpen} 
+                  playerName={props.playerName} 
+                  setPlayerName={props.setPlayerName}
+                  avatarImage={props.avatarImage}
+                  setAvatarImage={props.setAvatarImage} />
                 <Button onClick={props.handleClose}>Close</Button>             
             </FormControl>
           </Box>
