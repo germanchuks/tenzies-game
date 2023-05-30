@@ -24,13 +24,21 @@ export default function CreatePlayerDialog(props) {
     //   setGender(event.target.value);
     // };
 
-    
+ 
     function handleNewProfileSubmit() {
+
       props.setPlayerName(newPlayerName)
+      props.setAvatarImage(selectedAvatar[0].img)
+      console.log(selectedAvatar[0].img)
       props.handleClose()
     }
 
-    
+    // React.useEffect(() => {
+      
+    //   console.log(props.avatarImage)
+    //   props.setAvatarImage(selectedAvatar)
+    // }, [handleNewProfileSubmit, props, selectedAvatar])
+
   return (
     <div style ={{display: 'flex', justifyContent: 'space-around', flexDirection: 'column'}}>
       
@@ -53,6 +61,8 @@ export default function CreatePlayerDialog(props) {
                   setSelectedAvatar={setSelectedAvatar}
                   isSelected={isSelected}
                   setIsSelected={setIsSelected}
+                  avatarImage={props.avatarImage}
+                  setAvatarImage={props.setAvatarImage}
                   
                   />
                 <section style={{display: 'flex', justifyContent: 'space-evenly', width: '100%'}}>

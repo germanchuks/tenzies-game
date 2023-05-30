@@ -7,25 +7,38 @@ export default function SelectAvatar(props) {
 
 
 
-  
-
-  function toggle(id) {
-    props.isSelected.map(data => {
-      return props.setSelectedAvatar(prevData => data.clicked === true ? data.title : prevData)
+  const toggle = React.useCallback((id) => {
+    props.setIsSelected(prevData => {
+      return prevData.map((avatar) => {
+        return avatar.id === id ? {...avatar, clicked: !avatar.clicked} : {...avatar, clicked: false}
+          
     })
+})
+  }, [props]);
 
-      props.setIsSelected(prevData => {
-        return prevData.map((avatar) => {
-            return avatar.id === id ? {...avatar, clicked: !avatar.clicked} : {...avatar, clicked: false}
+//   function toggle(id) {
+    
+    
+
+//       props.setIsSelected(prevData => {
+//         return prevData.map((avatar) => {
+//             return avatar.id === id ? {...avatar, clicked: !avatar.clicked} : {...avatar, clicked: false}
               
-        })
-    })
+//         })
+//     })
    
-}
+// }
 
-  React.useEffect(() => {
-    console.log(props.selectedAvatar)
-  })
+    React.useEffect(() => {
+          
+      props.isSelected.map(data => {
+        return props.setSelectedAvatar(prevData => data.clicked === true ? data.img : prevData)
+      })
+    }, [props, toggle])
+
+    React.useEffect(() => {   
+      props.setSelectedAvatar(props.isSelected.filter(item => item.clicked === true))
+    },[props, toggle])
 
     return (
       <ImageList sx={{ width: '100%'}} cols={5} gap={5} >

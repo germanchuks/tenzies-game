@@ -13,7 +13,7 @@ function App() {
   const [playerName, setPlayerName] = useState('Kvng')
 
   // Avatar Image
-  const [avatarImage, setAvatarImage] = useState('')
+  const [avatarImage, setAvatarImage] = useState("/broken-image.jpg")
 
   //Set Game Deadline
   const [deadline, setDeadline] = useState(16)
